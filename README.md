@@ -20,7 +20,7 @@ I'm a Computer Science master's student at Binghamton University and a Software 
 - **Typing screen:** a small typing engine writes my story letter by letter, then backspaces and moves to the next line.
 - **Type along:** whatever visitors type shows up on the screen, and keys with the same letter press down.
 - **Typing wave:** every 10 seconds the keys hop one after another, P to O.
-- **Separate pages:** Projects, project case studies, About, Experience, Résumé, Toolkit, Lab and a Let's Talk contact form.
+- **Separate pages:** Projects, project case studies, About, Experience, Résumé, Toolkit and a Let's Talk contact form.
 - **Responsive:** three columns on desktop, stacked and centred on tablets and phones, with no sideways scrolling.
 - **Accessible:** every key is a real link you can reach with Tab, the photo has alt text, and animations switch off for visitors who turn on "Reduce motion".
 
@@ -41,7 +41,6 @@ Lyris-portfolio/
 ├── experience.html
 ├── resume.html
 ├── toolkit.html
-├── lab.html
 ├── lets-talk.html          Contact form
 ├── style.css               Styles shared by every page
 ├── site.js                 Name, email and scrolling strip (shared settings)
