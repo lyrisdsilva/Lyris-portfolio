@@ -52,6 +52,32 @@ Lyris-portfolio/
 └── resume-data-analyst.pdf
 ```
 
+## Run it locally
+
+No install needed.
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/lyrisdsilva/Lyris-portfolio.git
+   ```
+2. Open `index.html` in your browser.
+
+For live reload while editing, open the folder in VS Code and use the **Live Server** extension (right-click `index.html` → **Open with Live Server**).
+
+## Editing
+
+- **Name, email or scrolling strip:** edit the settings at the top of `site.js`.
+- **Text on a page:** edit that page's `.html` file directly.
+- **Lines typed on the screen:** edit `STORY` in `home.js`.
+- **Add a project:** copy a `project-*.html` file and edit it, then copy a card in `work.html` and point it at the new file.
+
+## Deploy with GitHub Pages
+
+1. Push this folder to a GitHub repository.
+2. Go to **Settings → Pages**.
+3. Under **Build and deployment**, choose **Deploy from a branch**, pick `main` and `/ (root)`, then click **Save**.
+4. After a minute or two the site is live at `https://<your-username>.github.io/<repository-name>/`.
+
 ## Credits
 
 - Concept and layout based on the "Retro Portfolio Machine" design handoff, including the retro computer artwork.
