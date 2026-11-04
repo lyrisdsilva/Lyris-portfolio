@@ -51,7 +51,8 @@ Lyris-portfolio/
 │   ├── logo.png            Lyris wordmark
 │   ├── me.jpg              Portrait
 │   └── screenshot.png      README screenshot
-└── resume-data-analyst.pdf
+├── resume-data-analyst.pdf
+└── resume-software-developer.pdf
 ```
 ## Credits
 
