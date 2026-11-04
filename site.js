@@ -6,6 +6,9 @@
 const SITE = {
   name:  "Lyris",
   email: "dsilvalyris@gmail.com",
+  // Let's Talk form: paste your Formspree link here, e.g. 'https://formspree.io/f/abcdwxyz'.
+  // Left empty, the form opens the visitor's email app with the message filled in.
+  formEndpoint: '',
   strip: ['Available for work', 'Design + code', 'Based in New York']
 };
 /* ======================= end of editable settings ======================= */
@@ -38,7 +41,7 @@ const SITE = {
     try { navigator.clipboard.writeText(SITE.email).then(done, select); } catch (e) { select(); }
   }));
 
-  // Work page filters (open work.html#featured to start on Featured)
+  // Work page filters
   const chips = $$('[data-filter]');
   if (chips.length) {
     const apply = f => {
@@ -48,6 +51,39 @@ const SITE = {
       });
     };
     chips.forEach(c => c.addEventListener('click', () => apply(c.dataset.filter)));
-    if (location.hash === '#featured') apply('Featured');
+    // Open a filter from the link, e.g. projects.html#featured or projects.html#data
+    const want = decodeURIComponent(location.hash.slice(1)).toLowerCase();
+    const match = chips.find(c => c.dataset.filter.toLowerCase().replace(/\s+/g, '-') === want);
+    if (match) apply(match.dataset.filter);
+  }
+
+  // Let's Talk form
+  const form = document.getElementById('talk-form');
+  if (form) {
+    const status = document.getElementById('tf-status');
+    const say = (msg, kind) => { status.textContent = msg; status.dataset.kind = kind || ''; };
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); say('Please fill in your name, a valid email and a message.', 'error'); return; }
+      const data = Object.fromEntries(new FormData(form));
+      if (data._gotcha) return;
+      delete data._gotcha;
+      const btn = form.querySelector('.tf-send');
+      if (SITE.formEndpoint) {
+        btn.disabled = true; say('Sending...');
+        try {
+          const r = await fetch(SITE.formEndpoint, { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+          if (!r.ok) throw new Error(r.status);
+          form.reset(); say("Message sent. Thanks! I'll get back to you soon.", 'ok');
+        } catch (err) {
+          say(`That didn't send. Please email me at ${SITE.email} instead.`, 'error');
+        } finally { btn.disabled = false; }
+      } else {
+        const subject = `${data.topic}: message from ${data.name}`;
+        const body = `${data.message}\n\n${data.name}\n${data.email}`;
+        location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        say(`Your email app should open with this message ready to send. If it doesn't, email me at ${SITE.email}.`, 'ok');
+      }
+    });
   }
 })();

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Telco Customer Churn Analysis | Lyris</title>
+<meta name="description" content="Why customers leave, and which ones to save first.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Hanken+Grotesk:wght@400..700&family=Instrument+Serif:ital@1&family=VT323&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="Telco Customer Churn Analysis">
+<div class="page">
+  <header class="nav pad">
+    <a class="logo" href="index.html" aria-label="Lyris, home"><img src="images/logo.png" alt="lyris" width="600" height="423"></a>
+
+    <a class="talk" href="lets-talk.html">Let's Talk ↗</a>
+  </header>
+  <nav class="subnav pad" aria-label="Pages"><a href="projects.html" aria-current="page">Projects</a><a href="about.html">About</a><a href="experience.html">Experience</a><a href="resume.html">Résumé</a><a href="toolkit.html">Toolkit</a><a href="lab.html">Lab</a></nav>
+  <main class="page-main pad">
+    <div class="pg">
+      <a class="back" href="projects.html">← All projects</a>
+      <div class="cv m-rings big" style="--cbg:#1e3a55;--cfg:#cfe6f2"><span class="cv-tag">Data</span><span class="cv-title" aria-hidden="true">T</span></div>
+      <div class="pg-head"><p class="eyebrow">Data</p><h2>Telco Customer Churn Analysis</h2><p class="pg-lede">Why customers leave, and which ones to save first.</p></div>
+      <dl class="cs-meta">
+        <div><dt>Category</dt><dd>Data</dd></div>
+        <div><dt>Built with</dt><dd>SQL, Python, pandas, scikit-learn, Jupyter</dd></div>
+        <div><dt>Key result</dt><dd>Found a group that is 13% of customers but 34% of churn</dd></div>
+      </dl>
+      <section class="cs-sec"><h3>Overview</h3><div class="body-copy"><p>An end-to-end churn analysis of 7,043 telecom customer records: who leaves, why they leave, and where a retention offer would pay off.</p></div></section>
+      <section class="cs-sec"><h3>The challenge</h3><div class="body-copy"><p>Churn was spread across thousands of customers. The goal was to find the specific groups driving it and turn that into actions a business could test.</p></div></section>
+      <section class="cs-sec"><h3>What I did</h3><div class="body-copy"><ul>
+          <li>Queried the data with SQL (CTEs, window functions and conditional aggregation) and explored it in pandas</li>
+          <li>Found that first-year, month-to-month fiber customers were 13% of customers but 34% of all churn, about $53K in lost monthly revenue</li>
+          <li>Built logistic regression and gradient boosting models (AUC 0.85, 5-fold cross-validation)</li>
+          <li>Showed month-to-month contracts carry 3.5× and fiber service 2.4× the churn odds, and that the riskiest 20% of customers held half of all churners</li>
+        </ul></div></section>
+      <section class="cs-sec"><h3>Outcome</h3><div class="body-copy"><p>Five testable retention recommendations, plus a revenue-sizing scenario estimating a 3–6× return on a targeted retention offer.</p></div></section>
+      <a class="cs-next" href="project-ecommerce-sales.html"><span><span class="eyebrow">Next project</span><br><b>E-Commerce Sales &amp; Customer Analysis</b></span><span aria-hidden="true">→</span></a>
+    <div class="cta-band"><strong>Got an idea? <em>Let's make it.</em></strong>
+      <div class="cta-row"><a class="dlg-cta" href="lets-talk.html">Say hello →</a><span class="addr" data-email>dsilvalyris@gmail.com</span><button type="button" class="copy" data-copy>Copy</button></div></div>
+    </div>
+  </main>
+  <div class="strip" aria-label="Highlights">
+    <div class="track" aria-hidden="true" id="track"></div>
+  </div>
+</div>
+<script src="site.js"></script>
+</body>
+</html>

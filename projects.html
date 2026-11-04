@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Projects | Lyris</title>
+<meta name="description" content="Selected projects by Lyris.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Hanken+Grotesk:wght@400..700&family=Instrument+Serif:ital@1&family=VT323&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="Projects">
+<div class="page">
+  <header class="nav pad">
+    <a class="logo" href="index.html" aria-label="Lyris, home"><img src="images/logo.png" alt="lyris" width="600" height="423"></a>
+
+    <a class="talk" href="lets-talk.html">Let's Talk ↗</a>
+  </header>
+  <nav class="subnav pad" aria-label="Pages"><a href="projects.html" aria-current="page">Projects</a><a href="about.html">About</a><a href="experience.html">Experience</a><a href="resume.html">Résumé</a><a href="toolkit.html">Toolkit</a><a href="lab.html">Lab</a></nav>
+  <main class="page-main pad">
+    <div class="pg">
+      <div class="pg-head"><p class="eyebrow">Selected projects · 7</p>
+        <h2>Things I've <em>made.</em></h2><p class="pg-lede">Data analysis, machine learning and full-stack projects. Pick one to see how it came together.</p></div>
+      <div class="filters" role="group" aria-label="Filter projects"><button type="button" class="chip" data-filter="All" aria-pressed="true">All<span class="count">7</span></button><button type="button" class="chip" data-filter="Featured" aria-pressed="false">Featured<span class="count">4</span></button><button type="button" class="chip" data-filter="Data" aria-pressed="false">Data<span class="count">2</span></button><button type="button" class="chip" data-filter="Machine learning" aria-pressed="false">Machine learning<span class="count">1</span></button><button type="button" class="chip" data-filter="Full-stack" aria-pressed="false">Full-stack<span class="count">2</span></button><button type="button" class="chip" data-filter="Web3" aria-pressed="false">Web3<span class="count">1</span></button><button type="button" class="chip" data-filter="Web" aria-pressed="false">Web<span class="count">1</span></button></div>
+      <!-- Each project card links to its own page. To add a project: copy one <a class="proj"> card,
+           then copy one project-*.html file and edit both. -->
+      <div class="proj-grid">
+        <a class="proj" href="project-telco-churn.html" data-type="Data" data-featured="yes">
+          <div class="cv m-rings" style="--cbg:#1e3a55;--cfg:#cfe6f2"><span class="cv-tag">Data</span><span class="cv-title" aria-hidden="true">T</span></div>
+          <div class="proj-row"><span class="proj-title">Telco Customer Churn Analysis <span class="star" aria-label="featured">✦</span></span></div>
+          <span class="proj-sum">Why customers leave, and which ones to save first.</span>
+          <span class="tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">scikit-learn</span></span>
+        </a>
+        <a class="proj" href="project-ecommerce-sales.html" data-type="Data" data-featured="yes">
+          <div class="cv m-grid" style="--cbg:#ee5b37;--cfg:#fff3e0"><span class="cv-tag">Data</span><span class="cv-title" aria-hidden="true">E</span></div>
+          <div class="proj-row"><span class="proj-title">E-Commerce Sales &amp; Customer Analysis <span class="star" aria-label="featured">✦</span></span></div>
+          <span class="proj-sum">What drives sales, repeat purchases and late deliveries.</span>
+          <span class="tags"><span class="tag">PostgreSQL</span><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">Tableau</span></span>
+        </a>
+        <a class="proj" href="project-e-health-care.html" data-type="Machine learning" data-featured="yes">
+          <div class="cv m-dots" style="--cbg:#2f4a3b;--cfg:#ece4cf"><span class="cv-tag">Machine learning</span><span class="cv-title" aria-hidden="true">E</span></div>
+          <div class="proj-row"><span class="proj-title">E-Health Care Platform <span class="star" aria-label="featured">✦</span></span></div>
+          <span class="proj-sum">Early screening for heart disease, diabetes and pneumonia.</span>
+          <span class="tags"><span class="tag">Python</span><span class="tag">Django</span><span class="tag">SQL</span><span class="tag">REST APIs</span></span>
+        </a>
+        <a class="proj" href="project-medease.html" data-type="Full-stack" data-featured="yes">
+          <div class="cv m-wave" style="--cbg:#3a2f4d;--cfg:#e8dcff"><span class="cv-tag">Full-stack</span><span class="cv-title" aria-hidden="true">M</span></div>
+          <div class="proj-row"><span class="proj-title">MEDEASE <span class="star" aria-label="featured">✦</span></span></div>
+          <span class="proj-sum">A healthcare portal for booking and messaging doctors.</span>
+          <span class="tags"><span class="tag">Full-stack web app</span><span class="tag">Database design</span><span class="tag">Search</span></span>
+        </a>
+        <a class="proj" href="project-crewconnect.html" data-type="Full-stack" data-featured="no">
+          <div class="cv m-keys" style="--cbg:#f2eadb;--cfg:#2a2723"><div class="keys"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="cv-tag">Full-stack</span><span class="cv-title" aria-hidden="true">C</span></div>
+          <div class="proj-row"><span class="proj-title">CrewConnect</span></div>
+          <span class="proj-sum">Mobile-first crew management for maritime teams.</span>
+          <span class="tags"><span class="tag">Full-stack web app</span><span class="tag">REST APIs</span><span class="tag">Real-time messaging</span></span>
+        </a>
+        <a class="proj" href="project-web3-talent-chain.html" data-type="Web3" data-featured="no">
+          <div class="cv m-grid" style="--cbg:#24305e;--cfg:#dfe6ff"><span class="cv-tag">Web3</span><span class="cv-title" aria-hidden="true">W</span></div>
+          <div class="proj-row"><span class="proj-title">Web3 Talent Chain</span></div>
+          <span class="proj-sum">A decentralized talent marketplace with crypto rewards.</span>
+          <span class="tags"><span class="tag">React.js</span><span class="tag">Solidity</span><span class="tag">Web3.js</span><span class="tag">MetaMask</span></span>
+        </a>
+        <a class="proj" href="project-retro-machine.html" data-type="Web" data-featured="no">
+          <div class="cv m-screen" style="--cbg:#f7c600;--cfg:#121110"><div class="scrn">&gt; hi_</div><span class="cv-tag">Web</span><span class="cv-title" aria-hidden="true">R</span></div>
+          <div class="proj-row"><span class="proj-title">The Retro Portfolio Machine</span></div>
+          <span class="proj-sum">A retro machine that types my story. This site.</span>
+          <span class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></span>
+        </a>
+      </div>
+    <div class="cta-band"><strong>Got an idea? <em>Let's make it.</em></strong>
+      <div class="cta-row"><a class="dlg-cta" href="lets-talk.html">Say hello →</a><span class="addr" data-email>dsilvalyris@gmail.com</span><button type="button" class="copy" data-copy>Copy</button></div></div>
+    </div>
+  </main>
+  <div class="strip" aria-label="Highlights">
+    <div class="track" aria-hidden="true" id="track"></div>
+  </div>
+</div>
+<script src="site.js"></script>
+</body>
+</html>

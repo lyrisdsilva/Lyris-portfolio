@@ -4,7 +4,7 @@ A personal portfolio built around a yellow retro computer. The nine keycaps spel
 
 **Live site:** https://lyrisdsilva.github.io/Lyris-portfolio/
 
-![Portfolio home page](screenshot.png)
+![Portfolio home page](images/screenshot.png)
 
 ## About me
 
@@ -20,7 +20,7 @@ I'm a Computer Science master's student at Binghamton University and a Software 
 - **Typing screen:** a small typing engine writes my story letter by letter, then backspaces and moves to the next line.
 - **Type along:** whatever visitors type shows up on the screen, and keys with the same letter press down.
 - **Typing wave:** every 10 seconds the keys hop one after another, P to O.
-- **Separate pages:** Work, project case studies, About, Experience, Services, Résumé, Toolkit and Lab.
+- **Separate pages:** Projects, project case studies, About, Experience, Résumé, Toolkit, Lab and a Let's Talk contact form.
 - **Responsive:** three columns on desktop, stacked and centred on tablets and phones, with no sideways scrolling.
 - **Accessible:** every key is a real link you can reach with Tab, the photo has alt text, and animations switch off for visitors who turn on "Reduce motion".
 
@@ -35,20 +35,23 @@ I'm a Computer Science master's student at Binghamton University and a Software 
 ```
 Lyris-portfolio/
 ├── index.html              Home page with the keyboard
-├── work.html               All projects, with filters
+├── projects.html           All projects, with filters
 ├── project-*.html          One page per project
 ├── about.html
 ├── experience.html
-├── services.html
 ├── resume.html
 ├── toolkit.html
 ├── lab.html
+├── lets-talk.html          Contact form
 ├── style.css               Styles shared by every page
 ├── site.js                 Name, email and scrolling strip (shared settings)
 ├── home.js                 Typing screen, keycaps and typing wave
-├── device.webp             Retro computer photo
-├── logo.png                Lyris wordmark
-├── me.jpg                  Portrait
+├── orbit.js                Orbiting tools on the Toolkit page
+├── images/
+│   ├── device.webp         Retro computer photo
+│   ├── logo.png            Lyris wordmark
+│   ├── me.jpg              Portrait
+│   └── screenshot.png      README screenshot
 └── resume-data-analyst.pdf
 ```
 ## Credits

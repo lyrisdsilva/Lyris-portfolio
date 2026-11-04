@@ -9,16 +9,14 @@
   $('#hero-name').textContent = SITE.name + '.';
   $('#scr-brand').textContent = `${SITE.name.toUpperCase()} / PORTFOLIO.EXE`;
   $('#head').textContent = `Hi, I'm ${SITE.name}.`;
-  const wideKey = document.querySelector('[data-wide]');
-  wideKey.dataset.desc = SITE.email; wideKey.setAttribute('aria-label', `O, Let's talk: email ${SITE.email}`);
 
   /* ---- Screen typing engine ---- */
   const STORY = [
     ['HELLO',   `Hi, I'm ${SITE.name}.`,     'A vibe coder with a curious mind.'],
     ['ABOUT',   'Data + code.',        'I turn messy data into clear answers.'],
     ['IMPACT',  '40% faster APIs.',    'Tuned backend logic at Prodigy InfoTech.'],
-    ['PROJECT', 'Project: Zenwood',    'A keyboard you can click through.'],
-    ['PROJECT', 'Project: This one',   'A retro machine that types my story.'],
+    ['PROJECT', 'Churn analysis.',     '7,043 customers, an 0.85 AUC model.'],
+    ['PROJECT', 'MEDEASE.',            'Healthcare portal, +45% bookings.'],
     ['WORK', '3 internships.',      'Backend, full-stack & web dev.'],
     ['CONTACT', 'Got an idea?',        SITE.email]
   ];
