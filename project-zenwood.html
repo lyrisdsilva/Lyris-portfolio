@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Zenwood | Lyris</title>
+<meta name="description" content="A keyboard you can click through.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Hanken+Grotesk:wght@400..700&family=Instrument+Serif:ital@1&family=VT323&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="Zenwood">
+<div class="page">
+  <header class="nav pad">
+    <a class="logo" href="index.html" aria-label="Lyris, home"><img src="logo.png" alt="lyris" width="600" height="423"></a>
+
+    <a class="talk" href="mailto:dsilvalyris@gmail.com" data-mailto>Let's Talk ↗</a>
+  </header>
+  <nav class="subnav pad" aria-label="Pages"><a href="work.html" aria-current="page">Work</a><a href="about.html">About</a><a href="process.html">Process</a><a href="services.html">Services</a><a href="resume.html">Résumé</a><a href="toolkit.html">Toolkit</a><a href="lab.html">Lab</a></nav>
+  <main class="page-main pad">
+    <div class="pg">
+      <a class="back" href="work.html">← All work</a>
+      <div class="cv m-keys big" style="--cbg:#2f4a3b;--cfg:#ece4cf"><div class="keys"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="cv-tag">Product · 2026</span><span class="cv-title" aria-hidden="true">Z</span></div>
+      <div class="pg-head"><p class="eyebrow">Product · 2026</p><h2>Zenwood</h2><p class="pg-lede">A keyboard you can click through.</p></div>
+      <dl class="cs-meta">
+        <div><dt>Role</dt><dd>Design &amp; front-end</dd></div>
+        <div><dt>Client</dt><dd>Concept project</dd></div>
+        <div><dt>Timeline</dt><dd>3 weeks</dd></div>
+        <div><dt>Tools</dt><dd>Figma, Claude, React, CSS</dd></div>
+      </dl>
+      <section class="cs-sec"><h3>Overview</h3><div class="body-copy"><p>Zenwood turns a calm, wood-toned mechanical keyboard into the navigation for a product site. Every key is a door into a different part of the story.</p></div></section>
+      <section class="cs-sec"><h3>The challenge</h3><div class="body-copy"><p>Make an interface that feels tactile and playful without hiding the content. Visitors had to understand in seconds that the keys are the menu.</p></div></section>
+      <section class="cs-sec"><h3>What I did</h3><div class="body-copy"><ul>
+          <li>Sketched the keyboard layout as a site map before drawing a single pixel</li>
+          <li>Prototyped key presses in Figma, then rebuilt them in CSS with real depth and springy timing</li>
+          <li>Used Claude to pair-program the interaction logic and test edge cases</li>
+          <li>Kept every key a real button, so it works with a keyboard and screen reader</li>
+        </ul></div></section>
+      <section class="cs-sec"><h3>Outcome</h3><div class="body-copy"><p>A small, fast site that people actually play with. It became the starting point for this portfolio.</p></div></section>
+      <a class="cs-next" href="project-retro-machine.html"><span><span class="eyebrow">Next project</span><br><b>The Retro Portfolio Machine</b></span><span aria-hidden="true">→</span></a>
+    <div class="cta-band"><strong>Got an idea? <em>Let's make it.</em></strong>
+      <div class="cta-row"><a class="dlg-cta" href="mailto:dsilvalyris@gmail.com" data-mailto>Say hello ↗</a><span class="addr" data-email>dsilvalyris@gmail.com</span><button type="button" class="copy" data-copy>Copy</button></div></div>
+    </div>
+  </main>
+  <div class="strip" aria-label="Highlights">
+    <div class="track" aria-hidden="true" id="track"></div>
+  </div>
+</div>
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,803 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Debbie — Retro Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="A vibe coder building playful digital experiences.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- FONTSHARE: for production hosting, uncomment to load the real Clash Display + Cabinet Grotesk
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=cabinet-grotesk@400,500,700&display=swap">
+-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Hanken+Grotesk:wght@400..700&family=Instrument+Serif:ital@1&family=VT323&display=swap">
+<style>
+/* Layout: nav bar + one three-column hero (intro · device · what I do), stacked & centred ≤1100px, marquee strip at the foot. */
+:root{
+  --bg:#121110; --card:#1d1c1a; --text:#f1ece2; --muted:#aaa49a; --line:#ffffff1c;
+  --yellow:#f7c600; --green:#8fd14f; --beige:#c9b88a; --amber:#ffd84d;
+  --display:"Clash Display","Bricolage Grotesque",system-ui,sans-serif;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --body:"Cabinet Grotesk","Hanken Grotesk",system-ui,sans-serif;
+  --term:"VT323",ui-monospace,Menlo,monospace;
+  --gutter:48px;
+  color-scheme:dark;
+}
+@property --lift{syntax:"<length>";inherits:true;initial-value:0px}
+
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.5;overflow-x:clip;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit}
+
+.page{min-height:100svh;display:grid;grid-template-rows:auto 1fr auto}
+.pad{padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+
+/* ---------- Nav ---------- */
+.nav{display:grid;grid-template-columns:1fr auto 1fr;grid-template-areas:"logo links talk";align-items:center;padding-block:22px;border-bottom:1px solid var(--line)}
+.logo{grid-area:logo;display:inline-flex;width:118px;justify-self:start}
+.logo img{width:100%;height:auto;filter:invert(1);mix-blend-mode:screen;display:block}
+.links{grid-area:links;display:flex;gap:34px;list-style:none;margin:0;padding:0}
+.links button{background:none;border:0;padding:4px 0;cursor:pointer;font-size:15px;font-weight:500;transition:color .2s,transform .2s;display:inline-block}
+.links button:hover,.links button:focus-visible{color:var(--yellow);transform:translateY(-2px)}
+.talk{grid-area:talk;justify-self:end;font-family:var(--display);font-weight:600;font-size:16px;text-decoration:none;transition:color .2s}
+.talk:hover,.talk:focus-visible{color:var(--yellow)}
+:focus-visible{outline:2px solid var(--text);outline-offset:4px;border-radius:4px}
+
+/* ---------- Hero ---------- */
+.hero{display:grid;grid-template-columns:minmax(260px,1fr) auto minmax(260px,1fr);align-items:center;gap:24px;padding-block:20px 16px;
+  background:radial-gradient(ellipse 46% 52% at 50% 46%,rgba(247,198,0,.08),transparent 70%)}
+.intro{display:flex;flex-direction:column;gap:18px;min-width:0}
+.avail{display:inline-flex;align-items:center;gap:9px;font-size:14px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(143,209,79,.16),0 0 12px rgba(143,209,79,.7)}
+h1{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(48px,5.1vw,76px);line-height:.98;letter-spacing:-.035em}
+h1 em{display:block;font-family:var(--serif);font-style:italic;font-weight:400;color:var(--yellow);font-size:1.14em;letter-spacing:-.01em;line-height:1}
+.lede{margin:0;font-size:17px;color:var(--muted);max-width:330px;line-height:1.5}
+
+.center{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0}
+.hint{margin:0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);text-align:center}
+.hint kbd{font:inherit;font-weight:600;color:var(--yellow);border:1px solid rgba(247,198,0,.55);border-bottom-width:2px;border-radius:4px;padding:2px 6px;margin-left:2px;letter-spacing:.16em}
+
+.do{display:flex;flex-direction:column;align-items:flex-end;gap:10px;text-align:right;min-width:0}
+.do-label{font-size:11px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
+.do ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+.do li{font-family:var(--display);font-weight:500;font-size:clamp(20px,1.75vw,26px);letter-spacing:-.02em;line-height:1.2}
+.do li em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--yellow);letter-spacing:0;font-size:1.08em}
+
+/* ---------- Device ---------- */
+.device{position:relative;width:min(800px,calc((100svh - 200px) * 1.1),calc(100vw - 640px));max-width:100%;aspect-ratio:1315/1196;container-type:inline-size;
+  user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.device>img{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.at{position:absolute;left:calc((var(--x) - var(--w)/2) / 1315 * 100%);top:calc((var(--y) - var(--h)/2) / 1196 * 100%);width:calc(var(--w) / 1315 * 100%);height:calc(var(--h) / 1196 * 100%)}
+
+/* Screen */
+.screen{transform:matrix(1,.086,-.028,1,0,0);text-align:left;padding:2.3cqw 2.6cqw;display:flex;flex-direction:column;overflow:hidden;font-family:var(--term);color:var(--amber);pointer-events:none}
+.screen::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px);mix-blend-mode:multiply;opacity:.8}
+.scr-top{display:flex;justify-content:space-between;align-items:center;font-size:1.75cqw;letter-spacing:.12em;color:rgba(255,216,77,.5)}
+.scr-tag{border:1px solid rgba(255,216,77,.35);padding:0 .6cqw;border-radius:.3cqw;color:rgba(255,216,77,.75)}
+.scr-body{margin-top:auto;margin-bottom:auto;padding-top:1.4cqw}
+.scr-head{font-size:5.4cqw;line-height:1;text-shadow:0 0 .9cqw rgba(255,216,77,.55),0 0 2.4cqw rgba(255,190,0,.3);white-space:pre;overflow:hidden}
+.scr-head.long{font-size:3.7cqw}
+.cursor{display:inline-block;width:.5em;height:.88em;vertical-align:-.08em;background:var(--amber);margin-left:.06em;box-shadow:0 0 .9cqw rgba(255,216,77,.6);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.scr-detail{margin-top:1.1cqw;font-size:2.55cqw;line-height:1.1;color:rgba(255,216,77,.8);min-height:1.1em;text-shadow:0 0 .7cqw rgba(255,216,77,.3)}
+
+/* Keycaps */
+.cap{--lift:.6cqw;transform:matrix(1,.135,-.42,1,0,0);background:none;border:0;padding:0;cursor:pointer;text-decoration:none;display:block;outline:none;
+  transition:--lift .55s cubic-bezier(.28,1.7,.5,1)}
+.cap.cream{--face:#f2eadb;--ink:#2a2723;--side:#b9aa8c}
+.cap.charcoal{--face:#2e2c29;--ink:#f7c600;--side:#141311}
+.cap.coral{--face:#ee5b37;--ink:#fff3e0;--side:#a9361b}
+.cap:hover,.cap:focus-visible{--lift:2.4cqw}
+.cap.down,.cap:active{--lift:.2cqw;transition:--lift .12s ease-out}
+.cap.hop{animation:hop .44s both}
+@keyframes hop{0%{--lift:.6cqw;animation-timing-function:cubic-bezier(.2,.7,.3,1)}40%{--lift:2.8cqw;animation-timing-function:cubic-bezier(.6,0,.85,.4)}100%{--lift:.6cqw}}
+.cap::before{content:"";position:absolute;inset:4% 2%;border-radius:14%/20%;background:rgba(0,0,0,.6);filter:blur(.9cqw);transform:translate(.35cqw,.6cqw)}
+.face{position:absolute;inset:0;border-radius:12%/18%;transform:translate(calc(var(--lift) * -.4),calc(var(--lift) * -.95));
+  background:linear-gradient(180deg,color-mix(in oklab,var(--face) 90%,white),color-mix(in oklab,var(--face) 72%,black));
+  box-shadow:
+    calc(var(--lift) * .133) calc(var(--lift) * .317) 0 .04cqw var(--side),
+    calc(var(--lift) * .267) calc(var(--lift) * .633) 0 .09cqw var(--side),
+    calc(var(--lift) * .4) calc(var(--lift) * .95) 0 .16cqw color-mix(in oklab,var(--side) 85%,black),
+    calc(var(--lift) * .4 + .3cqw) calc(var(--lift) * .95 + .5cqw) 1.2cqw rgba(0,0,0,.45)}
+.top{position:absolute;inset:5% 7% 17% 7%;border-radius:10%/16%;overflow:hidden;
+  background:radial-gradient(130% 150% at 22% 12%,color-mix(in oklab,var(--face) 82%,white),var(--face) 50%,color-mix(in oklab,var(--face) 92%,black));
+  box-shadow:inset 0 .35cqw .45cqw rgba(0,0,0,.2),inset 0 -.18cqw .2cqw rgba(255,255,255,.2),0 0 0 .05cqw rgba(0,0,0,.15)}
+.top::after{content:"";position:absolute;inset:0;background:linear-gradient(130deg,transparent 28%,rgba(255,255,255,.13) 44%,transparent 60%)}
+.ltr{position:absolute;left:9%;top:4%;font-family:var(--display);font-weight:700;font-size:3.5cqw;line-height:1;color:var(--ink)}
+.cap-cap{position:absolute;left:9%;bottom:9%;font-family:var(--body);font-weight:700;font-size:.92cqw;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);opacity:.8;white-space:nowrap}
+.cap.wide .top{display:flex;align-items:center;justify-content:space-between;padding:0 7%}
+.cap.wide .ltr,.cap.wide .cap-cap{position:static}
+.cap.wide .cap-cap{font-size:1.15cqw}
+.cap:focus-visible .face{outline:2px solid #fff;outline-offset:.4cqw}
+
+/* ---------- Marquee ---------- */
+.strip{border-top:1px solid var(--line);overflow:hidden;padding-block:14px;padding-left:0;padding-right:0}
+.track{display:flex;width:max-content;animation:marquee 45s linear infinite}
+.track span{font-family:var(--display);font-weight:500;font-size:15px;color:var(--beige);white-space:nowrap;padding-right:.7em}
+.track span::after{content:"✦";padding-left:.7em;color:var(--yellow)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---------- Pages (full-size sheet) ---------- */
+.sheet{padding:0;border:0;background:transparent;color:var(--text);width:min(1120px,calc(100vw - 32px));max-width:none;height:min(920px,calc(100svh - 40px));max-height:none;margin:auto;overflow:visible}
+.sheet::backdrop{background:rgba(10,9,8,.66);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.sheet[open]{animation:sheetIn .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes sheetIn{from{opacity:0;transform:translateY(18px) scale(.985)}}
+.sheet-in{height:100%;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.sheet-bar{display:flex;align-items:center;gap:14px;padding:12px 14px 12px 20px;border-bottom:1px solid var(--line);background:#1a1917}
+.sheet-brand{font-family:var(--term);font-size:20px;color:var(--amber);letter-spacing:.04em;white-space:nowrap}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0;padding:2px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:0;padding:8px 14px;border-radius:999px;font-size:14px;font-weight:600;color:var(--muted);white-space:nowrap;cursor:pointer;transition:color .2s,background .2s}
+.tab:hover{color:var(--text)}
+.tab[aria-current="page"]{background:var(--yellow);color:#1a1814}
+.sheet-close{background:#ffffff10;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;cursor:pointer;color:var(--text);white-space:nowrap}
+.sheet-close:hover{background:#ffffff1c}
+.sheet-body{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:44px 52px 0}
+.sheet-body:focus{outline:none}
+
+.pg{display:flex;flex-direction:column;gap:36px;padding-bottom:48px}
+.pg-head{display:flex;flex-direction:column;gap:12px;max-width:720px}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0}
+.pg h2{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(38px,5vw,64px);letter-spacing:-.035em;line-height:1;text-wrap:balance}
+.pg h2:focus{outline:none}
+.pg h2 em{font-family:var(--serif);font-weight:400;color:var(--yellow);letter-spacing:-.01em}
+.pg-lede{margin:0;font-size:18px;line-height:1.55;color:var(--muted);max-width:60ch}
+.pg h3{margin:0;font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.02em}
+.pg p{margin:0}
+.body-copy{display:flex;flex-direction:column;gap:14px;font-size:16.5px;line-height:1.65;color:#d9d3c8;max-width:64ch}
+
+/* Filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s}
+.chip:hover{color:var(--text);border-color:#ffffff40}
+.chip[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.count{font-variant-numeric:tabular-nums;opacity:.6;margin-left:4px}
+
+/* Project cards */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px 22px}
+.proj{background:none;border:0;padding:0;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:14px;color:inherit;border-radius:16px}
+.proj .cv{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.proj:hover .cv,.proj:focus-visible .cv{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.proj-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.proj-title{font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:-.02em}
+.proj-year{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.proj-sum{font-size:15px;color:var(--muted);line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11.5px;font-weight:600;letter-spacing:.04em;color:#cfc8bb;background:#ffffff0d;border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+.star{color:var(--yellow)}
+
+/* Generated covers */
+.cv{position:relative;aspect-ratio:4/3;max-width:100%;border-radius:14px;overflow:hidden;background:var(--cbg);color:var(--cfg);isolation:isolate}
+.cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cv-tag{position:absolute;left:6%;top:7%;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:.75;z-index:2}
+.cv-title{position:absolute;left:5%;bottom:-2%;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(110px,11vw,160px);line-height:1;z-index:2}
+.cv::before{content:"";position:absolute;inset:0;z-index:0;opacity:.22}
+.m-rings::before{background:repeating-radial-gradient(circle at 82% 30%,currentColor 0 2px,transparent 2px 22px)}
+.m-grid::before{background-image:linear-gradient(currentColor 1px,transparent 1px),linear-gradient(90deg,currentColor 1px,transparent 1px);background-size:28px 28px}
+.m-wave::before{background:repeating-linear-gradient(-28deg,currentColor 0 10px,transparent 10px 26px);opacity:.14}
+.m-dots::before{background-image:radial-gradient(currentColor 2px,transparent 2.5px);background-size:20px 20px}
+.m-keys .keys{position:absolute;right:6%;top:16%;display:grid;grid-template-columns:repeat(4,1fr);gap:7px;width:46%;transform:skewX(-14deg) rotate(-6deg);z-index:1}
+.m-keys .keys i{aspect-ratio:1.4;border-radius:22%;background:currentColor;opacity:.2;box-shadow:0 5px 0 rgba(0,0,0,.25)}
+.m-keys .keys i:nth-child(3n){opacity:.55}
+.m-screen .scrn{position:absolute;right:6%;top:12%;width:52%;aspect-ratio:1.6;border-radius:10px;background:#121110;border:5px solid color-mix(in oklab,var(--cbg) 70%,black);font-family:var(--term);color:var(--amber);font-size:clamp(14px,1.8vw,22px);padding:6% 8%;z-index:1;text-shadow:0 0 8px rgba(255,216,77,.5);box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+.cv.big{aspect-ratio:16/7}
+.cv.big .cv-title{font-size:clamp(150px,18vw,260px)}
+
+/* Case study */
+.back{align-self:flex-start;background:none;border:0;color:var(--muted);font-size:14px;font-weight:600;cursor:pointer;padding:4px 0}
+.back:hover{color:var(--yellow)}
+.cs-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;margin:0;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cs-meta dt{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.cs-meta dd{margin:0;font-size:15.5px;font-weight:500}
+.cs-sec{display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px}
+.cs-sec ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:8px}
+.cs-next{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:22px 24px;border-radius:16px;background:#ffffff08;border:1px solid var(--line);cursor:pointer;text-align:left;color:inherit;width:100%}
+.cs-next:hover{border-color:#ffffff38}
+.cs-next b{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:-.02em}
+.ext{color:var(--yellow);font-weight:600;text-decoration:none}
+.ext:hover{text-decoration:underline}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:minmax(220px,340px) minmax(0,1fr);gap:44px;align-items:start}
+.portrait{aspect-ratio:4/5;max-width:100%;border-radius:18px;background:var(--yellow);color:#121110;position:relative;overflow:hidden;display:grid;place-items:center}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.portrait span{font-family:var(--serif);font-style:italic;font-size:clamp(120px,14vw,200px);line-height:1}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px 24px;margin:8px 0 0;padding-top:22px;border-top:1px solid var(--line)}
+.facts dt{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.facts dd{margin:0;font-size:15.5px}
+
+/* Process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;counter-reset:s}
+.steps li{counter-increment:s;padding:24px;border-radius:16px;background:#ffffff07;border:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--term);font-size:26px;color:var(--amber)}
+.steps p{color:var(--muted);font-size:15px;line-height:1.55}
+.steps small{font-size:12.5px;color:#cfc8bb;letter-spacing:.02em}
+
+/* Services */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.svc{padding:26px;border-radius:16px;border:1px solid var(--line);background:#ffffff07;display:flex;flex-direction:column;gap:12px}
+.svc h3 em{font-family:var(--serif);font-weight:400;color:var(--yellow)}
+.svc p{color:var(--muted);font-size:15px;line-height:1.55}
+.svc ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:14px;color:#d9d3c8}
+.svc li::before{content:"→ ";color:var(--yellow)}
+
+/* Résumé */
+.cv-list{display:flex;flex-direction:column}
+.cv-item{display:grid;grid-template-columns:160px minmax(0,1fr);gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.cv-item:last-child{border-bottom:1px solid var(--line)}
+.cv-when{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.cv-what{display:flex;flex-direction:column;gap:6px}
+.cv-what span{font-size:14px;color:var(--yellow);font-weight:600}
+.cv-what p{color:var(--muted);font-size:15px;line-height:1.55}
+
+/* Toolkit */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.tool-group{padding:24px;border-radius:16px;border:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+.tool-group .tags{gap:8px}
+.tool-group .tag{font-size:13.5px;padding:6px 11px;color:var(--text)}
+
+/* Lab */
+.lab-list{display:flex;flex-direction:column;gap:12px}
+.lab{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 20px;align-items:center;padding:22px 24px;border-radius:16px;border:1px solid var(--line);background:#ffffff07}
+.lab p{color:var(--muted);font-size:15px;grid-column:1}
+.lab h3{font-size:20px}
+.status{grid-row:1/3;grid-column:2;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:5px 11px;white-space:nowrap}
+.status.live{background:rgba(143,209,79,.14);color:var(--green)}
+.status.wip{background:rgba(247,198,0,.14);color:var(--yellow)}
+.status.archived{background:#ffffff10;color:var(--muted)}
+
+/* Contact footer inside every page */
+.sheet-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;padding:28px 0 36px;border-top:1px solid var(--line)}
+.sheet-cta strong{font-family:var(--display);font-weight:600;font-size:clamp(24px,3vw,34px);letter-spacing:-.03em}
+.sheet-cta strong em{font-family:var(--serif);font-weight:400;color:var(--yellow)}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.dlg-cta{display:inline-block;background:var(--yellow);color:#1a1814;font-family:var(--display);font-weight:600;text-decoration:none;padding:11px 20px;border-radius:999px}
+.dlg-cta:hover{background:#ffd633}
+.addr{font-size:14px;color:var(--muted);user-select:all;-webkit-user-select:all}
+.copy{background:none;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:12px;font-weight:600;padding:5px 11px;cursor:pointer}
+.copy:hover{color:var(--text)}
+
+@media (max-width:760px){
+  .sheet{width:100vw;height:100svh;max-height:none;margin:0}
+  .sheet-in{border-radius:0;border:0;padding-top:env(safe-area-inset-top,0px)}
+  .sheet-bar{flex-wrap:wrap;padding:10px max(14px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));row-gap:8px}
+  .sheet-brand{flex:1}
+  .tabs{order:3;flex-basis:100%;margin:0 -4px}
+  .sheet-body{padding:28px max(18px,env(safe-area-inset-right,0px)) 0 max(18px,env(safe-area-inset-left,0px))}
+  .pg{gap:28px}
+  .proj-grid{grid-template-columns:1fr}
+  .cv.big{aspect-ratio:4/3}
+  .cs-sec,.cv-item,.about-grid{grid-template-columns:1fr;gap:10px}
+  .about-grid{gap:24px}
+  .portrait{max-width:260px}
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1100px){
+  .hero{grid-template-columns:1fr;justify-items:center;text-align:center;gap:26px;padding-block:36px 28px;
+    background:radial-gradient(ellipse 70% 40% at 50% 52%,rgba(247,198,0,.08),transparent 70%)}
+  .intro{align-items:center}
+  .lede{max-width:360px}
+  .device{width:min(680px,100%)}
+  .do{align-items:center;text-align:center}
+  .do ul{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:4px 20px}
+}
+@media (max-width:640px){
+  :root{--gutter:16px}
+  .nav{grid-template-columns:1fr auto;grid-template-areas:"logo talk" "links links";row-gap:14px;padding-block:16px 14px}
+  .logo{width:96px}
+  .links{justify-content:center;gap:22px}
+  .links button{font-size:14px}
+  .hero{padding-block:26px 22px;gap:20px}
+  h1{font-size:46px}
+  .lede{font-size:15px}
+  .device{width:calc(100% + 2 * max(var(--gutter),env(safe-area-inset-left,0px)));max-width:none;margin-inline:calc(-1 * max(var(--gutter),env(safe-area-inset-left,0px)))}
+  .do li{font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+
+<div class="page">
+  <header class="nav pad">
+    <a class="logo" href="#top" aria-label="Debbie, back to top"><img src="logo.png" alt="debbie" width="600" height="160"></a>
+    <ul class="links">
+      <li><button type="button" data-open="work">Work</button></li>
+      <li><button type="button" data-open="about">About</button></li>
+      <li><button type="button" data-open="process">Process</button></li>
+      <li><button type="button" data-open="services">Services</button></li>
+    </ul>
+    <a class="talk" href="mailto:hello@debbie.example">Let's Talk ↗</a>
+  </header>
+
+  <main class="hero pad" id="top">
+    <section class="intro">
+      <span class="avail"><span class="dot" aria-hidden="true"></span>Available for work</span>
+      <h1>Hi, I'm <em id="hero-name">Debbie.</em></h1>
+      <p class="lede">A vibe coder with a curious mind, building playful digital experiences.</p>
+    </section>
+
+    <div class="center">
+      <div class="device" id="device">
+        <img src="device.webp" alt="A glossy yellow retro computer with a dark screen, a round light and vents, and nine keycaps spelling PORTFOLIO." width="1315" height="1196">
+
+        <div class="at screen" style="--x:652;--y:345;--w:668;--h:322">
+          <div class="scr-top"><span id="scr-brand">DEBBIE / PORTFOLIO.EXE</span><span class="scr-tag" id="tag">HELLO</span></div>
+          <div class="scr-body">
+            <div class="scr-head"><span aria-hidden="true">&gt; </span><span id="head">Hi, I'm Debbie.</span><span class="cursor" aria-hidden="true"></span></div>
+            <div class="scr-detail" id="detail">A vibe coder with a curious mind.</div>
+          </div>
+        </div>
+
+        <button type="button" class="at cap charcoal" style="--x:323;--y:712;--w:146;--h:92" data-letter="p" data-open="work" data-name="Projects" data-desc="Selected product and web work." aria-label="P, Projects: open Selected Work"><span class="face"><span class="top"><span class="ltr" aria-hidden="true">P</span><span class="cap-cap">Projects</span></span></span></button>
+        <button type="button" class="at cap cream" style="--x:491;--y:736;--w:146;--h:92" data-letter="o" data-open="about" data-name="Origin story" data-desc="How a curious mind got here." aria-label="O, Origin story: open About"><span class="face"><span class="top"><span class="ltr" aria-hidden="true">O</span><span class="cap-cap">Origin story</span></span></span></button>
+        <button type="button" class="at cap coral" style="--x:658;--y:760;--w:146;--h:92" data-letter="r" data-open="resume" data-name="Résumé" data-desc="Designer and front-end developer." aria-label="R, Résumé: open Résumé"><span class="face"><span class="top"><span class="ltr" aria-hidden="true">R</span><span class="cap-cap">Résumé</span></span></span></button>
+        <button type="button" class="at cap cream" style="--x:825;--y:785;--w:146;--h:92" data-letter="t" data-open="toolkit" data-name="Toolkit" data-desc="Figma, Claude, React and CSS." aria-label="T, Toolkit: open Toolkit"><span class="face"><span class="top"><span class="ltr" aria-hidden="true">T</span><span class="cap-cap">Toolkit</span></span></span></button>
+        <button type="button" class="at cap charcoal" style="--x:990;--y:810;--w:146;--h:92" data-letter="f" data-open="work" data-filter="Featured" data-name="Featured" data-desc="The projects I'm proudest of." aria-label="F, Featured: open Selected Work"><span class="face"><span class="top"><span class="ltr" aria-hidden="true">F</span><span class="cap-cap">Featured</span></span></span></button>
+        <button type="button" class="at cap cream" style="--x:240;--y:830;--w:150;--h:98" data-letter="o" data-open="process" data-name="Process" data-desc="Talk, sketch, test, build." aria-label="O, Process: open My Process"><span class="face"><span class="top"><span class="ltr" aria-hidden="true">O</span><span class="cap-cap">Process</span></span></span></button>
+        <button type="button" class="at cap coral" style="--x:413;--y:861;--w:150;--h:98" data-letter="l" data-open="lab" data-name="The Lab" data-desc="Experiments and side projects." aria-label="L, Lab: open The Lab"><span class="face"><span class="top"><span class="ltr" aria-hidden="true">L</span><span class="cap-cap">Lab</span></span></span></button>
+        <button type="button" class="at cap cream" style="--x:587;--y:890;--w:150;--h:98" data-letter="i" data-open="about" data-name="Ideas" data-desc="A little personality, a lot of possibility." aria-label="I, Ideas: open About"><span class="face"><span class="top"><span class="ltr" aria-hidden="true">I</span><span class="cap-cap">Ideas</span></span></span></button>
+        <a class="at cap charcoal wide" style="--x:848;--y:939;--w:304;--h:110" href="mailto:hello@debbie.example" data-letter="o" data-wide data-name="Let's talk" data-desc="hello@debbie.example" aria-label="O, Let's talk: email hello@debbie.example"><span class="face"><span class="top"><span class="ltr" aria-hidden="true">O</span><span class="cap-cap">Let's talk ↵</span></span></span></a>
+      </div>
+      <p class="hint">Hover a key · or just start <kbd>Typing</kbd></p>
+    </div>
+
+    <aside class="do" aria-label="What I do">
+      <span class="do-label">What I do</span>
+      <ul>
+        <li>Data <em>analysis</em></li>
+        <li>Software <em>development</em></li>
+        <li>Dashboards & <em>reporting</em></li>
+        <li>Web <em>apps</em></li>
+      </ul>
+    </aside>
+  </main>
+
+  <div class="strip" aria-label="Python, SQL, JavaScript, React, Power BI, Excel">
+    <div class="track" aria-hidden="true" id="track"></div>
+  </div>
+</div>
+
+<dialog class="sheet" id="sheet" aria-label="Portfolio pages">
+  <div class="sheet-in">
+    <div class="sheet-bar">
+      <span class="sheet-brand" aria-hidden="true">&gt; portfolio.exe</span>
+      <nav class="tabs" id="tabs" aria-label="Pages"></nav>
+      <button type="button" class="sheet-close" id="sheet-close">Close ✕</button>
+    </div>
+    <div class="sheet-body" id="sheet-body" tabindex="-1"></div>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s);
+  const device = $('#device'), tagEl = $('#tag'), headEl = $('#head'), detailEl = $('#detail');
+  const caps = [...document.querySelectorAll('.cap')];
+  const dlg = $('#sheet');
+
+  /* ---- Marquee ---- */
+  const track = $('#track');
+   const unit = ['Available for work', 'Design + code', 'Based in New York'];
+  let html = '';
+  for (let i = 0; i < 16; i++) html += `<span>${unit[i % unit.length]}</span>`;
+  track.innerHTML = html;
+
+  /* =====================================================================
+     EDIT HERE: your name, email and all page content.
+     Change these and the whole site updates (headline, screen, links).
+     ===================================================================== */
+  const SITE = {
+    name:  'Lyris',
+    email: 'dsilvalyris@gmail.com',
+    location: 'Based in New York, working everywhere',
+    portrait: 'me.jpg',  
+  };
+
+  /* Projects. The first two come from your brief; the other four are SAMPLES:
+     replace them with your real work. Add `image: 'zenwood.jpg'` to any project
+     to use a real cover image instead of the generated one, and `link: 'https://…'`
+     to show a "Visit project" link. type: Product | Web | Brand | Prototype */
+  const PROJECTS = [
+    { slug: 'zenwood', title: 'Zenwood', type: 'Product', year: 2026, featured: true,
+      tagline: 'A keyboard you can click through.',
+      role: 'Design & front-end', client: 'Concept project', time: '3 weeks', tools: ['Figma', 'Claude', 'React', 'CSS'],
+      cover: { bg: '#2f4a3b', fg: '#ece4cf', motif: 'keys' },
+      overview: 'Zenwood turns a calm, wood-toned mechanical keyboard into the navigation for a product site. Every key is a door into a different part of the story.',
+      challenge: 'Make an interface that feels tactile and playful without hiding the content. Visitors had to understand in seconds that the keys are the menu.',
+      approach: ['Sketched the keyboard layout as a site map before drawing a single pixel', 'Prototyped key presses in Figma, then rebuilt them in CSS with real depth and springy timing', 'Used Claude to pair-program the interaction logic and test edge cases', 'Kept every key a real button, so it works with a keyboard and screen reader'],
+      outcome: 'A small, fast site that people actually play with. It became the starting point for this portfolio.' },
+    { slug: 'retro-machine', title: 'The Retro Portfolio Machine', type: 'Web', year: 2026, featured: true,
+      tagline: 'A retro machine that types my story.',
+      role: 'Concept, design & build', client: 'Personal', time: '2 weeks', tools: ['Figma', 'Claude', 'HTML', 'CSS', 'JavaScript'],
+      cover: { bg: '#f7c600', fg: '#121110', motif: 'screen' },
+      overview: 'This site. A yellow retro computer whose nine keys spell PORTFOLIO, with a screen that types my story on a loop.',
+      challenge: 'Fit live HTML keycaps onto a photographed device in perspective, so they line up perfectly at every screen size.',
+      approach: ['Measured every switch in the photo\'s own pixels and positioned caps as percentages', 'Built sculpted keycaps from layered gradients and a single animatable "lift" value', 'Wrote a tiny typing engine that tells the story and echoes whatever visitors type', 'Respected reduced-motion settings and made every key keyboard-accessible'],
+      outcome: 'A one-page portfolio with personality that still loads fast and works on phones.' },
+    { slug: 'tidepool', title: 'Tidepool', type: 'Product', year: 2025, featured: false,
+      tagline: 'A gentle habit tracker that rewards consistency, not streaks.',
+      role: 'Product design', client: 'Sample client', time: '6 weeks', tools: ['Figma', 'Rive', 'React Native'],
+      cover: { bg: '#1e3a55', fg: '#cfe6f2', motif: 'rings' },
+      overview: 'A mobile app that helps people build small daily habits without the guilt of broken streaks.',
+      challenge: 'Most habit apps punish missed days. The goal was a tracker that feels encouraging even after a rough week.',
+      approach: ['Interviewed early users about why they quit other trackers', 'Replaced streak counters with a tide that rises and falls with your week', 'Designed a calm visual language and micro-animations in Rive'],
+      outcome: 'A clear, friendly app concept ready for development, with a full design system.' },
+    { slug: 'saltbox', title: 'Saltbox Bakery', type: 'Brand', year: 2025, featured: false,
+      tagline: 'Identity and ordering site for a neighbourhood bakery.',
+      role: 'Brand & web design', client: 'Sample client', time: '4 weeks', tools: ['Figma', 'Illustrator', 'Webflow'],
+      cover: { bg: '#ee5b37', fg: '#fff3e0', motif: 'grid' },
+      overview: 'A warm, hand-made identity for a small bakery, carried through to a simple pre-order website.',
+      challenge: 'The bakery sold out by 10am every day. Customers needed a way to reserve bread without a complicated shop.',
+      approach: ['Built a wordmark and a set of bread-shaped icons', 'Designed a one-page pre-order flow that works in under a minute', 'Set up the site so the owners can update the daily menu themselves'],
+      outcome: 'A brand that feels as warm as the shop, and mornings with fewer disappointed customers.' },
+    { slug: 'murmur', title: 'Murmur', type: 'Prototype', year: 2025, featured: true,
+      tagline: 'Voice notes that sort themselves.',
+      role: 'Prototype & interaction design', client: 'Side project', time: '10 days', tools: ['Claude', 'React', 'Web Audio'],
+      cover: { bg: '#3a2f4d', fg: '#e8dcff', motif: 'wave' },
+      overview: 'An AI-assisted voice notes prototype that groups your ramblings into ideas, tasks and reminders.',
+      challenge: 'Make capturing a thought as fast as talking, and finding it later just as easy.',
+      approach: ['Prototyped a one-button recorder with a live waveform', 'Used Claude to summarise and tag each note', 'Tested the flow with friends and cut every screen that slowed them down'],
+      outcome: 'A working prototype that proved the idea and became a favourite demo.' },
+    { slug: 'fieldday', title: 'Fieldday', type: 'Web', year: 2024, featured: false,
+      tagline: 'Booking site for outdoor team events.',
+      role: 'UI / UX design & front-end', client: 'Sample client', time: '5 weeks', tools: ['Figma', 'Next.js', 'CSS'],
+      cover: { bg: '#f2eadb', fg: '#2a2723', motif: 'dots' },
+      overview: 'A bright, simple website for booking outdoor team days, from picking an activity to paying a deposit.',
+      challenge: 'The old booking process lived in email threads. Organisers needed to compare options and book in one sitting.',
+      approach: ['Mapped the booking journey with the team', 'Designed activity cards that compare price, group size and duration at a glance', 'Built the front-end with accessible forms and clear error messages'],
+      outcome: 'A booking flow organisers can finish on their phone during a coffee break.' }
+  ];
+
+  const ABOUT = {
+    paragraphs: [
+      `Hi, I'm ${SITE.name}. Welcome to my portfolio. A little personality. A lot of possibility.`,
+      'I\'m a vibe coder: part designer, part developer, always curious. I like ideas that feel playful the moment you touch them, and I build them with Figma, Claude and a lot of heart.',
+      'Over the years I\'ve shipped 50 apps and worked with 30 brands, from tiny side projects to product teams. My favourite work sits where design and code meet.'
+    ],
+    facts: [
+      ['Based', SITE.location],
+      ['Focus', 'Interaction, motion & UI / UX design'],
+      ['Currently', 'Available for new projects'],
+      ['Off-screen', 'GYM, long walks, good coffee']
+    ]
+  };
+
+  const PROCESS = [
+    ['We talk', 'A short call to understand the idea, the people it\'s for and what success looks like.', 'You get: a one-page brief'],
+    ['I sketch', 'Fast sketches and wireframes to explore directions before anything gets polished.', 'You get: 2–3 directions to react to'],
+    ['We test', 'A clickable prototype we put in front of real people early, while changes are cheap.', 'You get: a working prototype'],
+    ['I build', 'Design and front-end together, shared often, launched with care.', 'You get: a live, tested product']
+  ];
+
+  const SERVICES = [
+    ['Interaction', 'design', 'Interfaces that respond, delight and make sense the first time.', ['User flows & wireframes', 'Micro-interactions', 'Accessible components']],
+    ['Motion', 'design', 'Movement that explains, guides and gives a product its personality.', ['UI animation', 'Rive & Lottie assets', 'Motion guidelines']],
+    ['Prototyping', '', 'Ideas you can click, test and show to investors or users this week.', ['Figma prototypes', 'Coded prototypes', 'AI-powered demos']],
+    ['UI / UX', 'design', 'Complete product design, from research to a polished design system.', ['Research & testing', 'Visual design', 'Design systems']]
+  ];
+
+  /* Résumé: SAMPLE entries, replace with your own history. */
+  const RESUME = [
+    ['2023 — now', 'Independent product designer & developer', 'Freelance', 'Designing and building apps, sites and prototypes for startups and brands.'],
+    ['2020 — 2023', 'Product designer', 'Digital product studio', 'Led UI and interaction design across mobile and web products for studio clients.'],
+    ['2018 — 2020', 'Junior designer & front-end developer', 'Creative agency', 'Built marketing sites and campaign microsites; learned to love CSS.'],
+    ['2014 — 2018', 'BA, Interaction Design', 'University', 'Graduation project: a tangible interface for learning music.']
+  ];
+
+  const TOOLKIT = [
+    ['Design', ['Figma', 'FigJam', 'Illustrator', 'Photoshop']],
+    ['Build', ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js', 'Webflow']],
+    ['AI', ['Claude', 'Prompt design', 'AI prototyping']],
+    ['Motion', ['Rive', 'After Effects', 'Lottie', 'CSS animation']]
+  ];
+
+  const LAB = [
+    ['Keycap generator', 'Type a word, get a set of sculpted CSS keycaps to drop into any site.', 'live'],
+    ['Pixel weather', 'A tiny terminal-style weather widget in VT323 and amber glow.', 'wip'],
+    ['Sound of scrolling', 'Experiment: soft mechanical clicks as you scroll a long page.', 'wip'],
+    ['Paper UI', 'Interface components that fold and crease like real paper.', 'archived']
+  ];
+  /* ======================= end of editable content ======================= */
+
+  /* ---- Pages engine ---- */
+  const sheet = $('#sheet'), sheetBody = $('#sheet-body'), tabsEl = $('#tabs');
+  const PAGES = [['work', 'Work'], ['about', 'About'], ['process', 'Process'], ['services', 'Services'], ['resume', 'Résumé'], ['toolkit', 'Toolkit'], ['lab', 'Lab']];
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const mail = () => `mailto:${SITE.email}`;
+  let current = null, workFilter = 'All', opener = null;
+
+  tabsEl.innerHTML = PAGES.map(([k, l]) => `<button type="button" class="tab" data-go="${k}">${l}</button>`).join('');
+
+  function cover(p, big) {
+    const c = p.cover || {};
+    const inner = p.image ? `<img src="${esc(p.image)}" alt="">`
+      : c.motif === 'keys' ? `<div class="keys">${'<i></i>'.repeat(12)}</div>`
+      : c.motif === 'screen' ? `<div class="scrn">&gt; hi_</div>` : '';
+    return `<div class="cv m-${esc(c.motif || 'grid')}${big ? ' big' : ''}" style="--cbg:${esc(c.bg || '#2e2c29')};--cfg:${esc(c.fg || '#f1ece2')}">
+      ${inner}${p.image ? '' : `<span class="cv-tag">${esc(p.type)} · ${p.year}</span><span class="cv-title" aria-hidden="true">${esc(p.title.replace(/^The /,'')[0])}</span>`}</div>`;
+  }
+  const ctaBlock = () => `<div class="sheet-cta"><strong>Got an idea? <em>Let's make it.</em></strong>
+    <div class="cta-row"><a class="dlg-cta" href="${mail()}">Say hello ↗</a><span class="addr">${esc(SITE.email)}</span><button type="button" class="copy" data-copy>Copy</button></div></div>`;
+
+  const RENDER = {
+    work() {
+      const types = ['All', 'Featured', ...new Set(PROJECTS.map(p => p.type))];
+      const list = PROJECTS.filter(p => workFilter === 'All' || (workFilter === 'Featured' ? p.featured : p.type === workFilter));
+      return `<div class="pg"><div class="pg-head"><p class="eyebrow">Selected work · ${PROJECTS.length} projects</p>
+        <h2 tabindex="-1">Things I've <em>made.</em></h2>
+        <p class="pg-lede">Product, web and brand projects, from first sketch to shipped. Pick one to see how it came together.</p></div>
+        <div class="filters" role="group" aria-label="Filter projects">${types.map(t => {
+          const n = t === 'All' ? PROJECTS.length : t === 'Featured' ? PROJECTS.filter(p => p.featured).length : PROJECTS.filter(p => p.type === t).length;
+          return `<button type="button" class="chip" data-filter="${t}" aria-pressed="${t === workFilter}">${t}<span class="count">${n}</span></button>`; }).join('')}</div>
+        <div class="proj-grid">${list.map(p => `<button type="button" class="proj" data-proj="${p.slug}" aria-label="Open ${esc(p.title)} case study">
+          ${cover(p)}<div class="proj-row"><span class="proj-title">${esc(p.title)}${p.featured ? ' <span class="star" aria-label="featured">✦</span>' : ''}</span><span class="proj-year">${p.year}</span></div>
+          <span class="proj-sum">${esc(p.tagline)}</span>
+          <span class="tags">${[p.type, ...p.tools.slice(0, 3)].map(t => `<span class="tag">${esc(t)}</span>`).join('')}</span></button>`).join('')}</div>
+        ${ctaBlock()}</div>`;
+    },
+    project(slug) {
+      const i = PROJECTS.findIndex(p => p.slug === slug); const p = PROJECTS[i];
+      if (!p) return RENDER.work();
+      const next = PROJECTS[(i + 1) % PROJECTS.length];
+      return `<div class="pg"><button type="button" class="back" data-go="work">← All work</button>
+        ${cover(p, true)}
+        <div class="pg-head"><p class="eyebrow">${esc(p.type)} · ${p.year}</p><h2 tabindex="-1">${esc(p.title)}</h2><p class="pg-lede">${esc(p.tagline)}</p>
+        ${p.link ? `<a class="ext" href="${esc(p.link)}" target="_blank" rel="noopener">Visit project ↗</a>` : ''}</div>
+        <dl class="cs-meta"><div><dt>Role</dt><dd>${esc(p.role)}</dd></div><div><dt>Client</dt><dd>${esc(p.client)}</dd></div>
+          <div><dt>Timeline</dt><dd>${esc(p.time)}</dd></div><div><dt>Tools</dt><dd>${esc(p.tools.join(', '))}</dd></div></dl>
+        <section class="cs-sec"><h3>Overview</h3><div class="body-copy"><p>${esc(p.overview)}</p></div></section>
+        <section class="cs-sec"><h3>The challenge</h3><div class="body-copy"><p>${esc(p.challenge)}</p></div></section>
+        <section class="cs-sec"><h3>What I did</h3><div class="body-copy"><ul>${p.approach.map(a => `<li>${esc(a)}</li>`).join('')}</ul></div></section>
+        <section class="cs-sec"><h3>Outcome</h3><div class="body-copy"><p>${esc(p.outcome)}</p></div></section>
+        <button type="button" class="cs-next" data-proj="${next.slug}"><span><span class="eyebrow">Next project</span><br><b>${esc(next.title)}</b></span><span aria-hidden="true">→</span></button>
+        ${ctaBlock()}</div>`;
+    },
+    about() {
+      return `<div class="pg"><div class="about-grid">
+        <div class="portrait">${SITE.portrait ? `<img src="${esc(SITE.portrait)}" alt="Portrait of ${esc(SITE.name)}">` : `<span aria-hidden="true">${esc(SITE.name[0])}</span>`}</div>
+        <div class="pg-head" style="max-width:none"><p class="eyebrow">About</p><h2 tabindex="-1">Hi, I'm <em>${esc(SITE.name)}.</em></h2>
+          <div class="body-copy">${ABOUT.paragraphs.map(t => `<p>${esc(t)}</p>`).join('')}</div>
+          <dl class="facts">${ABOUT.facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl></div></div>
+        ${ctaBlock()}</div>`;
+    },
+    process() {
+      return `<div class="pg"><div class="pg-head"><p class="eyebrow">My process</p><h2 tabindex="-1">Small steps, <em>shared often.</em></h2>
+        <p class="pg-lede">We talk, I sketch, we test, I build. You see progress every few days, never just at the end.</p></div>
+        <ol class="steps">${PROCESS.map(([t, d, g]) => `<li><h3>${esc(t)}</h3><p>${esc(d)}</p><small>${esc(g)}</small></li>`).join('')}</ol>
+        ${ctaBlock()}</div>`;
+    },
+    services() {
+      return `<div class="pg"><div class="pg-head"><p class="eyebrow">Services</p><h2 tabindex="-1">What I can <em>do for you.</em></h2>
+        <p class="pg-lede">Hire me for one piece or the whole thing, from a single prototype to a launched product.</p></div>
+        <div class="svc-grid">${SERVICES.map(([a, b, d, l]) => `<div class="svc"><h3>${esc(a)} ${b ? `<em>${esc(b)}</em>` : ''}</h3><p>${esc(d)}</p><ul>${l.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div>
+        ${ctaBlock()}</div>`;
+    },
+    resume() {
+      return `<div class="pg"><div class="pg-head"><p class="eyebrow">Résumé</p><h2 tabindex="-1">Product designer & <em>front-end developer.</em></h2>
+        <p class="pg-lede">The short version is below. Full CV on request.</p></div>
+        <div class="cv-list">${RESUME.map(([w, r, c, d]) => `<div class="cv-item"><span class="cv-when">${esc(w)}</span><div class="cv-what"><h3>${esc(r)}</h3><span>${esc(c)}</span><p>${esc(d)}</p></div></div>`).join('')}</div>
+        ${ctaBlock()}</div>`;
+    },
+    toolkit() {
+      return `<div class="pg"><div class="pg-head"><p class="eyebrow">Toolkit</p><h2 tabindex="-1">Tools I <em>reach for.</em></h2>
+        <p class="pg-lede">Figma, Claude, React, CSS and a lot of curiosity.</p></div>
+        <div class="tool-grid">${TOOLKIT.map(([g, t]) => `<div class="tool-group"><h3>${esc(g)}</h3><div class="tags">${t.map(x => `<span class="tag">${esc(x)}</span>`).join('')}</div></div>`).join('')}</div>
+        ${ctaBlock()}</div>`;
+    },
+    lab() {
+      return `<div class="pg"><div class="pg-head"><p class="eyebrow">The Lab</p><h2 tabindex="-1">Experiments & <em>half-finished ideas.</em></h2>
+        <p class="pg-lede">Side projects worth sharing, whether they shipped or not.</p></div>
+        <div class="lab-list">${LAB.map(([t, d, s]) => `<div class="lab"><h3>${esc(t)}</h3><span class="status ${s}">${s === 'wip' ? 'In progress' : s}</span><p>${esc(d)}</p></div>`).join('')}</div>
+        ${ctaBlock()}</div>`;
+    }
+  };
+
+  function show(page, arg, opts = {}) {
+    const key = page === 'project' ? 'project-' + arg : page;
+    if (key === current && sheet.open) return;
+    current = key;
+    sheetBody.innerHTML = page === 'project' ? RENDER.project(arg) : RENDER[page]();
+    const tabKey = page === 'project' ? 'work' : page;
+    tabsEl.querySelectorAll('.tab').forEach(t => { if (t.dataset.go === tabKey) t.setAttribute('aria-current', 'page'); else t.removeAttribute('aria-current'); });
+    const activeTab = tabsEl.querySelector('[aria-current]'); if (activeTab) activeTab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    sheetBody.scrollTop = 0;
+    if (!sheet.open) {
+      opener = opts.from || (document.activeElement !== document.body ? document.activeElement : null);
+      try { sheet.showModal(); } catch (e) { sheet.setAttribute('open', ''); }
+    }
+    const h = sheetBody.querySelector('h2'); if (h && !opts.keepFocus) h.focus({ preventScroll: true });
+    if (location.hash.slice(1) !== key) { try { history.replaceState(null, '', '#' + key); } catch (e) {} }
+  }
+  function openPage(name, from, filter) {
+    if (filter) workFilter = filter; else if (name === 'work' && !sheet.open) workFilter = 'All';
+    if (name.startsWith('project-')) show('project', name.slice(8), { from });
+    else show(PAGES.some(p => p[0] === name) ? name : 'work', null, { from });
+  }
+
+  document.querySelectorAll('[data-open]').forEach(el =>
+    el.addEventListener('click', () => openPage(el.dataset.open, el, el.dataset.filter)));
+  sheet.addEventListener('click', e => {
+    if (e.target === sheet) { sheet.close(); return; }
+    const go = e.target.closest('[data-go]'); if (go) { show(go.dataset.go); return; }
+    const pr = e.target.closest('[data-proj]'); if (pr) { show('project', pr.dataset.proj); return; }
+    const f = e.target.closest('[data-filter]');
+    if (f) { workFilter = f.dataset.filter; current = null; show('work', null, { keepFocus: true }); const b = sheetBody.querySelector(`[data-filter="${f.dataset.filter}"]`); if (b) b.focus(); return; }
+    const cp = e.target.closest('[data-copy]');
+    if (cp) {
+      const done = () => { cp.textContent = 'Copied'; setTimeout(() => { cp.textContent = 'Copy'; }, 1600); };
+      const fallback = () => { const a = cp.previousElementSibling; const r = document.createRange(); r.selectNodeContents(a); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+      try { navigator.clipboard.writeText(SITE.email).then(done, fallback); } catch (err) { fallback(); }
+    }
+  });
+  $('#sheet-close').addEventListener('click', () => sheet.close());
+  sheet.addEventListener('close', () => {
+    current = null;
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+    if (opener && opener.focus) opener.focus({ preventScroll: true }); opener = null;
+  });
+  function route() {
+    const h = decodeURIComponent(location.hash.slice(1));
+    if (h.startsWith('project-') || PAGES.some(p => p[0] === h)) openPage(h);
+    else if (sheet.open && !h) sheet.close();
+  }
+  addEventListener('hashchange', route);
+
+  /* ---- Apply name & email everywhere ---- */
+  document.title = `${SITE.name} | Portfolio`;
+  $('#hero-name').textContent = SITE.name + '.';
+  $('#scr-brand').textContent = `${SITE.name.toUpperCase()} / PORTFOLIO.EXE`;
+  $('#head').textContent = `Hi, I'm ${SITE.name}.`;
+  document.querySelectorAll('a[href^="mailto:"]').forEach(a => { a.href = mail(); });
+  const wideKey = document.querySelector('[data-wide]');
+  wideKey.dataset.desc = SITE.email; wideKey.setAttribute('aria-label', `O, Let's talk: email ${SITE.email}`);
+  $('.logo').setAttribute('aria-label', `${SITE.name}, back to top`);
+  /* ---- Screen typing engine ---- */
+  const STORY = [
+    ['HELLO',   `Hi, I'm ${SITE.name}.`,     'A vibe coder with a curious mind.'],
+    ['ABOUT',   'I build with AI.',    'Figma, Claude and a lot of heart.'],
+    ['WORK',    '50 apps built.',      'Trusted by 30 brands along the way.'],
+    ['PROJECT', 'Project: Zenwood',    'A keyboard you can click through.'],
+    ['PROJECT', 'Project: This one',   'A retro machine that types my story.'],
+    ['PROCESS', 'Idea → website.',     'Sketch, prototype, build, launch.'],
+    ['CONTACT', 'Got an idea?',        SITE.email]
+  ];
+  let run = 0, storyIdx = 0, pretyped = true, mode = 'story';
+  const wait = (ms, id) => new Promise(r => setTimeout(() => r(id === run), ms));
+  const setHead = t => { headEl.textContent = t; headEl.parentElement.classList.toggle('long', t.length > 16); };
+  const setTag = t => { tagEl.textContent = t; };
+
+  async function typeInto(setter, text, id, min, max) {
+    if (RM) { setter(text); return true; }
+    for (let i = 1; i <= text.length; i++) {
+      setter(text.slice(0, i));
+      let d = min + Math.random() * (max - min);
+      if (text[i - 1] === ' ') d += 140;
+      if (!(await wait(d, id))) return false;
+    }
+    return true;
+  }
+  async function erase(id) {
+    if (RM) { setHead(''); return true; }
+    while (headEl.textContent.length) {
+      setHead(headEl.textContent.slice(0, -1));
+      if (!(await wait(42, id))) return false;
+    }
+    return true;
+  }
+  const setDetail = t => { detailEl.textContent = t; };
+
+  async function story() {
+    const id = ++run; mode = 'story';
+    while (true) {
+      const [tag, head, detail] = STORY[storyIdx % STORY.length];
+      setTag(tag);
+      if (pretyped) { pretyped = false; }
+      else {
+        setDetail(''); setHead('');
+        if (!(await wait(260, id))) return;
+        if (!(await typeInto(setHead, head, id, 110, 200))) return;
+        if (!(await wait(240, id))) return;
+        if (!(await typeInto(setDetail, detail, id, 22, 48))) return;
+      }
+      if (!(await wait(RM ? 4200 : 2800, id))) return;
+      setDetail('');
+      if (!(await erase(id))) return;
+      storyIdx++;
+    }
+  }
+
+  async function explore(cap) {
+    const id = ++run; mode = 'explore';
+    clearTimeout(resumeT);
+    setTag('EXPLORE'); setHead(''); setDetail('');
+    if (!(await typeInto(setHead, cap.dataset.name + '.', id, 55, 95))) return;
+    await typeInto(setDetail, cap.dataset.desc, id, 16, 32);
+  }
+
+  let resumeT = 0;
+  function scheduleResume(ms = 700) {
+    clearTimeout(resumeT);
+    resumeT = setTimeout(() => {
+      if (typingActive() || dlg.open) return;
+      const a = document.activeElement;
+      if (a && a.classList && a.classList.contains('cap')) return;
+      if (device.querySelector('.cap:hover')) return;
+      storyIdx++; story();
+    }, ms);
+  }
+
+  /* ---- Keycap hover / focus ---- */
+  let overKeys = false;
+  device.addEventListener('pointerenter', () => { overKeys = true; });
+  device.addEventListener('pointerleave', () => { overKeys = false; });
+  caps.forEach(cap => {
+    cap.addEventListener('pointerenter', e => { if (e.pointerType !== 'touch' && !typingActive()) explore(cap); });
+    cap.addEventListener('pointerleave', () => { if (mode === 'explore') scheduleResume(); });
+    cap.addEventListener('focus', () => { if (!typingActive()) explore(cap); });
+    cap.addEventListener('blur', () => { if (mode === 'explore') scheduleResume(); });
+    cap.addEventListener('click', () => { if (!typingActive()) explore(cap); });
+  });
+
+  /* ---- Real keyboard typing ---- */
+  let buffer = '', idleT = 0, lastType = 0;
+  const typingActive = () => Date.now() - lastType < 3500 && buffer.length > 0;
+  function press(cap) {
+    cap.classList.add('down');
+    clearTimeout(cap._t);
+    cap._t = setTimeout(() => cap.classList.remove('down'), 150);
+  }
+  function showBuffer() {
+    run++; mode = 'user';
+    setTag('YOU'); setDetail(`You're typing on ${SITE.name}'s keyboard.`); setHead(buffer);
+    lastType = Date.now();
+    clearTimeout(idleT); clearTimeout(resumeT);
+    idleT = setTimeout(() => { buffer = ''; setHead(''); storyIdx++; story(); }, 3500);
+  }
+  document.addEventListener('keydown', e => {
+    if (dlg.open || e.metaKey || e.ctrlKey || e.altKey || e.isComposing) return;
+    const t = e.target;
+    if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+    const onControl = t && t.closest && t.closest('a,button');
+    const k = e.key;
+    if (k === 'Backspace') {
+      if (!buffer) return;
+      e.preventDefault(); buffer = buffer.slice(0, -1); showBuffer(); return;
+    }
+    if (k === 'Enter') {
+      if (onControl) return;
+      e.preventDefault(); buffer = '';
+      const wide = device.querySelector('[data-wide]'); if (wide) press(wide);
+      run++; mode = 'user'; setTag('YOU'); setDetail(`You're typing on ${SITE.name}'s keyboard.`); setHead('');
+      lastType = Date.now(); clearTimeout(idleT);
+      idleT = setTimeout(() => { storyIdx++; story(); }, 3500);
+      return;
+    }
+    if (k.length !== 1) return;
+    if (k === ' ' && onControl) return;
+    e.preventDefault();
+    buffer = (buffer + k).slice(-28);
+    const low = k.toLowerCase();
+    caps.forEach(c => { if (c.dataset.letter === low) press(c); });
+    showBuffer();
+  });
+
+  /* ---- Typing wave every 10s ---- */
+  function wave() {
+    if (RM || document.hidden || overKeys || typingActive() || dlg.open) return;
+    const a = document.activeElement;
+    if (a && a.classList && a.classList.contains('cap')) return;
+    caps.forEach((c, i) => setTimeout(() => {
+      c.classList.remove('hop'); void c.offsetWidth; c.classList.add('hop');
+    }, i * 460));
+  }
+  caps.forEach(c => c.addEventListener('animationend', () => c.classList.remove('hop')));
+  if (!RM) { setTimeout(wave, 2200); setInterval(wave, 10000); }
+
+  route();
+  story();
+})();
+</script>
+
+</body></html>
