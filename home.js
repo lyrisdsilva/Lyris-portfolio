@@ -15,11 +15,11 @@
   /* ---- Screen typing engine ---- */
   const STORY = [
     ['HELLO',   `Hi, I'm ${SITE.name}.`,     'A vibe coder with a curious mind.'],
-    ['ABOUT',   'I build with AI.',    'Figma, Claude and a lot of heart.'],
-    ['WORK',    '50 apps built.',      'Trusted by 30 brands along the way.'],
+    ['ABOUT',   'Data + code.',        'I turn messy data into clear answers.'],
+    ['IMPACT',  '40% faster APIs.',    'Tuned backend logic at Prodigy InfoTech.'],
     ['PROJECT', 'Project: Zenwood',    'A keyboard you can click through.'],
     ['PROJECT', 'Project: This one',   'A retro machine that types my story.'],
-    ['PROCESS', 'Idea → website.',     'Sketch, prototype, build, launch.'],
+    ['WORK', '3 internships.',      'Backend, full-stack & web dev.'],
     ['CONTACT', 'Got an idea?',        SITE.email]
   ];
   let run = 0, storyIdx = 0, pretyped = true, mode = 'story';
